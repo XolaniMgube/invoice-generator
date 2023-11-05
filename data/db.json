@@ -1,0 +1,18 @@
+{
+  "list": [
+    {
+      "id": "30be853f-c6c4-4bc3-9f1b-5cd25de23aaf",
+      "itemName": "Njabulo",
+      "quantity": "3",
+      "singlePrice": 3,
+      "fullPrice": 9
+    },
+    {
+      "id": "5b93ba45-1b78-4d90-bd96-c76112ddbd4a",
+      "itemName": "fga",
+      "quantity": "4",
+      "singlePrice": 4,
+      "fullPrice": 16
+    }
+  ]
+}

@@ -1,30 +1,41 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
+import api from "./api/invoice-data";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ItemForm from "./ItemForm";
 import Total from "./Total";
 import AddedItemsList from "./AddedItemsList";
 import TaxAmounts from "./TaxAmounts";
 import Nav from "./Nav";
+import Sidebar from "./Sidebar";
 
-const list = [
-  // {
-  //   itemName: "cement",
-  //   quantity: 4,
-  //   price: 60
-  // },
-  // {
-  //   itemName: "gravel",
-  //   quantity: 2,
-  //   price: 100
-  // }
-];
+import { CSVLink } from "react-csv";
+
+const list = [];
 
 function App() {
-  const [material, setMaterial] = useState(list);
+  const [material, setMaterial] = useState([]);
   const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const fetchList = async () => {
+      try {
+        const response = await api.get("/list");
+        setMaterial(response.data);
+      } catch (err) {
+        if (err.response) {
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else {
+          console.log(`Error: ${err.message}`);
+        }
+      }
+    };
+    fetchList();
+  }, []);
 
   function handleTotal(value) {
     console.log(value);
@@ -35,21 +46,73 @@ function App() {
     setMaterial((currentMaterial) => [...currentMaterial, newMaterial]);
   }
 
+  async function handleFilterOnDelete(filtered) {
+    try {
+      await api.delete(`/list/${filtered.id}`);
+      const leftAfterDelete = material.filter(
+        (item) => item.id !== filtered.id
+      );
+      setMaterial(leftAfterDelete);
+      handleTotal(-filtered.fullPrice);
+    } catch (err) {
+      console.log("error: " + err.message);
+    }
+  }
+
+  console.log(material);
+
+  // const data = material;
+
+  const headers = [
+    {
+      label: "itemName",
+      key: "itemName",
+    },
+    {
+      label: "quantity",
+      key: "quantity",
+    },
+    {
+      label: "singlePrice",
+      key: "singlePrice",
+    },
+    {
+      label: "fullPrice",
+      key: "fullPrice",
+    },
+  ];
+
+  const csvLink = {
+    filename: "file.csv",
+    headers: headers,
+    data: material,
+  };
+
   return (
-    <div className="app">
-      <Nav /> 
+    <div className="flex">
+      {/* <Nav /> */}
+      <Sidebar />
       <Container>
-        <Row>
-          <Col md={8}>
+        <Row className="mt-5">
+          <Col md={10} className="mx-auto text-center">
+            <h1>Generate Invoice</h1>
+          </Col>
+          <Col md={10} className="mx-auto">
             <ItemForm
               handleTotal={handleTotal}
               handleAddNewItem={handleAddNewItem}
             />
-            <AddedItemsList material={material} />
+            <AddedItemsList
+              material={material}
+              handleFilterOnDelete={handleFilterOnDelete}
+            />
           </Col>
-          <Col>
+          <Col md={10} className="mx-auto">
             <TaxAmounts total={total} />
             {/* <Total total={total} /> */}
+            <button className=" bg-active py-3 px-20 ">
+              <CSVLink {...csvLink} className="text-white no-underline py-3 px-20">Export</CSVLink>
+            </button>
           </Col>
         </Row>
       </Container>
