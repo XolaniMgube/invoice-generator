@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Form, Container, InputGroup } from "react-bootstrap";
-import api from "./api/invoice-data";
+import api from "../api/invoice-data";
 
 export default function Item({ handleTotal, handleAddNewItem }) {
   const [item, setItem] = useState("");

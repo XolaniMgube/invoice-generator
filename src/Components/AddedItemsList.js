@@ -3,11 +3,6 @@ import { Table } from "react-bootstrap";
 
 export default function AddedItemsList({ material, handleFilterOnDelete }) {
   return (
-    // <div className="added-items-list">
-    //
-
-    // </div>
-
     <Table striped bordered hover className="bg-green">
       <thead>
         <tr>
