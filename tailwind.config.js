@@ -14,6 +14,8 @@ module.exports = {
       "sideBarText": "#a0a6af",
       "lightGrey": "#8d8d8d",
       "active": "#24c5b0",
+      "loginWhite": "rgb(244, 244, 244)",
+      "normalGrey": "rgb(103, 103, 103)"
     },
     extend: {},
   },

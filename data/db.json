@@ -1,18 +1,25 @@
 {
   "list": [
     {
-      "id": "30be853f-c6c4-4bc3-9f1b-5cd25de23aaf",
-      "itemName": "Njabulo",
-      "quantity": "3",
-      "singlePrice": 3,
-      "fullPrice": 9
+      "id": "34f45c3b-a9c8-465d-8da8-614db6fae05d",
+      "itemName": "asdf",
+      "quantity": "2",
+      "singlePrice": 2,
+      "fullPrice": 4
     },
     {
-      "id": "5b93ba45-1b78-4d90-bd96-c76112ddbd4a",
-      "itemName": "fga",
-      "quantity": "4",
-      "singlePrice": 4,
-      "fullPrice": 16
+      "id": "f1b49f68-1cca-4adc-8059-1df56f3c99bb",
+      "itemName": "",
+      "quantity": "",
+      "singlePrice": "",
+      "fullPrice": 0
+    },
+    {
+      "id": "89318b2b-9660-4ff8-9ff8-430dc6e1b6d7",
+      "itemName": "",
+      "quantity": "",
+      "singlePrice": "",
+      "fullPrice": 0
     }
   ]
 }

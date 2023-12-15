@@ -19,7 +19,10 @@ export default function AddedItem( {mat, handleFilterOnDelete} ) {
             <td>{mat.quantity}</td>
             <td>{mat.singlePrice}</td>
             <td>{mat.fullPrice}</td>
-            <td><Button onClick={e => handleDelete(e)} variant="danger">Delete</Button></td>
+            <td>
+                <Button onClick={e => handleDelete(e)} variant="danger">Delete</Button>
+                <Button onClick={e => handleDelete(e)} variant="warning" className="text-light ms-2">Edit</Button>
+            </td>
         </tr>
 
     )
