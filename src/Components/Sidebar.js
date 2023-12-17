@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Sidebar() {
   return (
     <div className="w-3/12 bg-darkGrey h-screen text-sideBarText">
@@ -14,29 +16,29 @@ export default function Sidebar() {
       </div>
       <div className="">
         <ul className="sidebar-list p-0 m-0">
-          <li className="py-3 bg-active">
-            <a
-              href="*"
-              className="ps-2 pe-28 py-3 hover:text-darkGrey text-darkGrey no-underline w-100"
+          <li className="py-1 bg-active">
+            <Link
+              to={"/dashboard"}
+              className="ps-2 pe-28 py-3 hover:text-darkGrey text-darkGrey no-underline block"
             >
               Generate Invoice
-            </a>
+            </Link>
           </li>
-          <li className="py-3 hover:bg-active">
-            <a
-              href="*"
-              className="ps-2 pe-28 py-3 hover:text-darkGrey no-underline text-sideBarText w-96"
+          <li className="py-1 hover:bg-active">
+            <Link
+              to="/update-invoice"
+              className="ps-2 pe-28 py-3 hover:text-darkGrey no-underline text-sideBarText block"
             >
               Update Invoice
-            </a>
+            </Link>
           </li>
-          <li className="py-3 hover:bg-active">
-            <a
-              href="*"
-              className="ps-2 pe-28 py-3 hover:text-darkGrey no-underline text-sideBarText"
+          <li className="py-1 hover:bg-active">
+            <Link
+              to={"/gen-settings"}
+              className="ps-2 pe-28 py-3 hover:text-darkGrey no-underline text-sideBarText block"
             >
               Settings
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

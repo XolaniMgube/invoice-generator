@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [login, setLogin] = useState(false);
 
   const savedEmail = "xnmgube@gmail.com";
   const savedPassword = "password";
@@ -10,10 +12,14 @@ export default function SignIn() {
   const handleSubmitLogin = (e) => {
     e.preventDefault();
     if (email === savedEmail && password === savedPassword) {
-      console.log("match");
-      window.location.replace("http://localhost:3000/dashboard");
+      setLogin(true);
     }
   };
+
+  if (login) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <div className="h-screen w-screen bg-active">
       <div className="h-screen flex justify-center border-2">

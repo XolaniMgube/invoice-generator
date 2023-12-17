@@ -10,12 +10,14 @@ import AddedItemsList from "../Components/AddedItemsList";
 import TaxAmounts from "../Components/TaxAmounts";
 import Nav from "../Components/Nav";
 import Sidebar from "../Components/Sidebar";
+import MainContainer from "../Components/MainContainer";
 
 import { CSVLink } from "react-csv";
+import TotalsContainer from "../Components/TotalsContainer";
 
 const list = [];
 
-function App() {
+function Dashboard() {
   const [material, setMaterial] = useState([]);
   const [total, setTotal] = useState(0);
 
@@ -23,6 +25,7 @@ function App() {
     const fetchList = async () => {
       try {
         const response = await api.get("/list");
+        console.log(response.data)
         setMaterial(response.data);
       } catch (err) {
         if (err.response) {
@@ -92,7 +95,10 @@ function App() {
     <div className="flex">
       {/* <Nav /> */}
       <Sidebar />
-      <Container>
+      <MainContainer handleAddNewItem={handleAddNewItem} material={material} />
+      <TotalsContainer />
+      
+      {/* <Container>
         <Row className="mt-5">
           <Col md={10} className="mx-auto text-center">
             <h1>Generate Invoice</h1>
@@ -109,15 +115,14 @@ function App() {
           </Col>
           <Col md={10} className="mx-auto">
             <TaxAmounts total={total} />
-            {/* <Total total={total} /> */}
             <button className=" bg-active py-3 px-20 ">
               <CSVLink {...csvLink} className="text-white no-underline py-3 px-20">Export</CSVLink>
             </button>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </div>
   );
 }
 
-export default App;
+export default Dashboard;
