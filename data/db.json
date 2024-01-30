@@ -1,39 +1,97 @@
 {
   "list": [
     {
-      "id": "34f45c3b-a9c8-465d-8da8-614db6fae05d",
-      "itemName": "asdf",
+      "id": "529e106c-e785-4c23-a947-f70f3ae922e7",
+      "itemName": "Light bill coz boy we been on",
+      "quantity": "12",
+      "singlePrice": "20",
+      "fullPrice": 240
+    },
+    {
+      "id": "30f67bd8-09af-4c11-aba1-c0ba21a2612e",
+      "itemName": "Xolani",
       "quantity": "2",
-      "singlePrice": 2,
-      "fullPrice": 4
+      "singlePrice": "4588",
+      "fullPrice": 9176
     },
     {
-      "id": "f1b49f68-1cca-4adc-8059-1df56f3c99bb",
-      "itemName": "",
-      "quantity": "",
-      "singlePrice": "",
-      "fullPrice": 0
+      "id": "5b662190-367d-4289-bc33-7bcae66e8a50",
+      "itemName": "Praying for paper",
+      "quantity": "20",
+      "singlePrice": "2000",
+      "fullPrice": 40000
     },
     {
-      "id": "89318b2b-9660-4ff8-9ff8-430dc6e1b6d7",
-      "itemName": "",
-      "quantity": "",
-      "singlePrice": "",
-      "fullPrice": 0
+      "id": "0c825b86-b7a0-4ca8-90af-24959a64a2b3",
+      "itemName": "Give me my chelete",
+      "quantity": "50",
+      "singlePrice": "12",
+      "fullPrice": 600
     },
     {
-      "id": "a0d264aa-f408-4de8-96d4-6509213b991d",
-      "itemName": "peo",
-      "quantity": "2",
-      "singlePrice": "2",
-      "fullPrice": 4
+      "id": "5e3c9407-7549-4e69-8ca3-a04ed5964b86",
+      "itemName": "Color Pens",
+      "quantity": "5",
+      "singlePrice": "123",
+      "fullPrice": 615
     },
     {
-      "id": "b661f54a-b459-4170-8158-a930e9203cf1",
-      "itemName": "",
-      "quantity": "",
-      "singlePrice": "",
-      "fullPrice": 0
+      "id": "1b704d79-3b40-4923-8085-49a45d0385bd",
+      "itemName": "Phone cases",
+      "quantity": "70",
+      "singlePrice": "164",
+      "fullPrice": 11480
+    },
+    {
+      "id": "bde78f5b-8bcb-44d3-9ddd-3402cd20a3c6",
+      "itemName": "Youtube ",
+      "quantity": "1",
+      "singlePrice": "10",
+      "fullPrice": 10
+    }
+  ],
+  "users": [
+    {
+      "name": "Xolani Mgube",
+      "title": "Designer",
+      "status": "away",
+      "picture": "https://i.pravatar.cc/48?u=118836",
+      "id": "d700"
+    },
+    {
+      "name": "Momo Mgube",
+      "title": "Project Manager",
+      "status": "online",
+      "picture": "https://i.pravatar.cc/48?u=117736",
+      "id": "ea4e"
+    },
+    {
+      "name": "Mbali Nyembe",
+      "title": "Senior Manager",
+      "status": "away",
+      "picture": "https://i.pravatar.cc/48?u=117436",
+      "id": "487d"
+    },
+    {
+      "name": "Mpilo Mgube",
+      "title": "Software Developer",
+      "status": "online",
+      "picture": "https://i.pravatar.cc/48?u=747436",
+      "id": "98e3"
+    },
+    {
+      "name": "Njaubolo Mgube",
+      "title": "Software Developer",
+      "status": "online",
+      "picture": "https://i.pravatar.cc/48?u=747476",
+      "id": "55d0"
+    },
+    {
+      "name": "Jabulile Mgube",
+      "title": "Software Developer",
+      "status": "online",
+      "picture": "https://i.pravatar.cc/48?u=742436",
+      "id": "816d"
     }
   ]
 }
