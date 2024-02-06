@@ -3,11 +3,21 @@ import { MdOutlinePeopleAlt, MdOutlineFreeCancellation } from "react-icons/md";
 import { VscFolderActive } from "react-icons/vsc";
 import { StatsGraph } from "./StatsGraph";
 import { Users } from "./Users";
+import { motion } from "framer-motion";
 
 export function DashContainer() {
   return (
     <>
-      <div className="w-7/12 ">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.5,
+          ease: [0.5, 0.71, 0.2, 1.01],
+        }}
+        className="w-7/12 "
+      >
         <div className="flex justify-between mt-12">
           <StatsCard
             background="bg-cardLightRed"
@@ -37,10 +47,19 @@ export function DashContainer() {
         <div>
           <StatsGraph />
         </div>
-      </div>
-      <div className="w-3/12 mt-12 mx-3">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.5,
+          ease: [0.5, 0.71, 0.2, 1.01],
+        }}
+        className="w-3/12 mt-12 mx-3"
+      >
         <Users />
-      </div>
+      </motion.div>
     </>
   );
 }
