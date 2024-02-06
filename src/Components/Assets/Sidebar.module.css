@@ -1,0 +1,7 @@
+.nav li a:hover{
+    color: #00D7FF;
+}
+
+:global(.active) {
+    color: #00D7FF;
+}
