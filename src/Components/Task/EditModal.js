@@ -18,7 +18,7 @@ export default function EditModal({
     fullPrice: Number(qauntityToEdit * singlePriceToEdit),
   };
   return (
-    <div className="border bg-white shadow-lg rounded-lg w-6/12 mx-auto absolute top-56 left-96 p-3">
+    <div className="border bg-white shadow-lg rounded-lg p-3">
       <div className="flex justify-end">
         <button onClick={() => handleCloseEdit()}>
           <RxCross2 size={24} className="hover:cursor-pointer"/>

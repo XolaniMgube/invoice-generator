@@ -23,7 +23,7 @@ export default function MainContainer({
       }}
       className="w-10/12 mx-5 my-5"
     >
-      <ItemForm handleAddNewItem={handleAddNewItem} handleTotal={handleTotal} />
+      <ItemForm handleAddNewItem={handleAddNewItem} handleTotal={handleTotal} material={material} />
       <AddedItemsList
         handleFilterOnDelete={handleFilterOnDelete}
         material={material}

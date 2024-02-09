@@ -1,24 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
 import api from "../api/invoice-data";
 
 import { useEffect, useState } from "react";
-
-import Nav from "../Components/Fragments/Nav";
-import Sidebar from "../Components/Fragments/Sidebar";
 import MainContainer from "../Components/Task/MainContainer";
 
-import { CSVLink } from "react-csv";
 import TotalsContainer from "../Components/Task/TotalsContainer";
 import EditModal from "../Components/Task/EditModal";
-import { RiNumbersFill } from "react-icons/ri";
+
+import { motion } from "framer-motion";
 
 function Task() {
   const [material, setMaterial] = useState([]);
   const [total, setTotal] = useState(0);
   const [openEdit, setOpenEdit] = useState(false);
   const [openTotals, setOpenTotals] = useState(false);
-  const [taxAmount, setTaxAmount] = useState(0);
   const [parseId, setParseId] = useState("");
 
   useEffect(() => {
@@ -116,52 +111,49 @@ function Task() {
     data: material,
   };
 
-  // console.log(...csvLink)
-
   return (
-    <div className="bg-simple-gradient">
-      <Nav />
-      <div className="flex">
-        <Sidebar />
-        <MainContainer
-          handleAddNewItem={handleAddNewItem}
-          material={material}
-          handleFilterOnDelete={handleFilterOnDelete}
-          handleOpenEdit={handleOpenEdit}
-          handleEdit={handleEdit}
-          handleOpenTotals={handleOpenTotals}
-          csvLink={csvLink}
-        />
-
-        {/* <div md={10} className="mx-auto">
-          <button className=" bg-active py-3 px-20 ">
-            <CSVLink
-              {...csvLink}
-              className="text-white no-underline py-3 px-20"
-            >
-              Export
-            </CSVLink>
-          </button>
-        </div> */}
-
-      </div>
+    <>
+      <MainContainer
+        handleAddNewItem={handleAddNewItem}
+        material={material}
+        handleFilterOnDelete={handleFilterOnDelete}
+        handleOpenEdit={handleOpenEdit}
+        handleEdit={handleEdit}
+        handleOpenTotals={handleOpenTotals}
+        csvLink={csvLink}
+      />
       {openTotals ? (
-        <TotalsContainer
-          total={total}
-          material={material}
-          handleCloseTotals={handleCloseTotals}
-        />
+        <motion.div
+          className="w-3/12 absolute right-0 top-12"
+          initial={{ x: 300 }}
+          animate={{ x: 0 }}
+        >
+          <TotalsContainer
+            total={total}
+            material={material}
+            handleCloseTotals={handleCloseTotals}
+          />
+        </motion.div>
       ) : null}
 
       {openEdit ? (
-        <EditModal
-          handleCloseEdit={handleCloseEdit}
-          handleEdit={handleEdit}
-          material={material}
-          parseId={parseId}
-        />
+        <motion.div
+          className="w-6/12 mx-auto absolute top-56 left-96"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            ease: [0.5, 0.71, 0.2, 1.01],
+          }}
+        >
+          <EditModal
+            handleCloseEdit={handleCloseEdit}
+            handleEdit={handleEdit}
+            material={material}
+            parseId={parseId}
+          />
+        </motion.div>
       ) : null}
-    </div>
+    </>
   );
 }
 

@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import api from "../../api/invoice-data";
 
-export function ItemForm({ handleTotal, handleAddNewItem }) {
+export function ItemForm({ handleTotal, handleAddNewItem, material }) {
   const [item, setItem] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
+  const [fieldError, setFieldError] = useState("")
+  const itemRef = useRef(null)
+
+
+  useEffect(() => {
+    itemRef.current?.focus()
+  }, [material])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (item === '') {
+      itemRef.current.focus()
+      setFieldError("Make sure all fields are have correct input")
+      return
+    }
     const newMaterial = {
       id: crypto.randomUUID(),
       itemName: item,
@@ -27,12 +38,13 @@ export function ItemForm({ handleTotal, handleAddNewItem }) {
     setItem("");
     setQuantity("");
     setPrice("");
+    setFieldError('')
   };
 
   return (
     <div className="w-12/12 bg-white shadow rounded-lg mb-4 p-3">
       <div>
-        <h4 className="font-bold">Generate Invoice</h4>
+        <h4 className="font-bold">Generate Invoice {fieldError ? <span className="px-3 text-red text-sm font-normal bg-cardLightRed">{fieldError}</span>: null}</h4>
       </div>
       <form className="" action="" onSubmit={handleSubmit}>
         <div className="flex">
@@ -51,6 +63,7 @@ export function ItemForm({ handleTotal, handleAddNewItem }) {
               type="text"
               value={item}
               onChange={(e) => setItem(e.target.value)}
+              ref={itemRef}
             />
           </div>
           <div className="w-2/12 mx-2">

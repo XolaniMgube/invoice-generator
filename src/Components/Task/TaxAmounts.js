@@ -1,9 +1,11 @@
+import { motion } from "framer-motion"
 export default function TaxAmounts({ total, material }) {
   const fullTotal = material.reduce((acc, mat) => acc + mat.fullPrice, 0);
   const tax = fullTotal * (14 / 100);
 
   return (
-    <div className="tax-amounts">
+    <div className="tax-amounts"
+    >
       <div>
         <div className="">
           <div>

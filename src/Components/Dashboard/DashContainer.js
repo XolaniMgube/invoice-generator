@@ -5,7 +5,8 @@ import { StatsGraph } from "./StatsGraph";
 import { Users } from "./Users";
 import { motion } from "framer-motion";
 
-export function DashContainer() {
+export function DashContainer({correctUser}) {
+  console.log(correctUser)
   return (
     <>
       <motion.div
@@ -19,6 +20,7 @@ export function DashContainer() {
         className="w-7/12 "
       >
         <div className="flex justify-between mt-12">
+          
           <StatsCard
             background="bg-cardLightRed"
             value={583}

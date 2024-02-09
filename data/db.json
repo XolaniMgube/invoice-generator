@@ -1,41 +1,6 @@
 {
   "list": [
     {
-      "id": "529e106c-e785-4c23-a947-f70f3ae922e7",
-      "itemName": "Light bill coz boy we been on",
-      "quantity": "12",
-      "singlePrice": "20",
-      "fullPrice": 240
-    },
-    {
-      "id": "30f67bd8-09af-4c11-aba1-c0ba21a2612e",
-      "itemName": "Xolani",
-      "quantity": "2",
-      "singlePrice": "4588",
-      "fullPrice": 9176
-    },
-    {
-      "id": "5b662190-367d-4289-bc33-7bcae66e8a50",
-      "itemName": "Praying for paper",
-      "quantity": "20",
-      "singlePrice": "2000",
-      "fullPrice": 40000
-    },
-    {
-      "id": "0c825b86-b7a0-4ca8-90af-24959a64a2b3",
-      "itemName": "Give me my chelete",
-      "quantity": "50",
-      "singlePrice": "12",
-      "fullPrice": 600
-    },
-    {
-      "id": "5e3c9407-7549-4e69-8ca3-a04ed5964b86",
-      "itemName": "Color Pens",
-      "quantity": "5",
-      "singlePrice": "123",
-      "fullPrice": 615
-    },
-    {
       "id": "1b704d79-3b40-4923-8085-49a45d0385bd",
       "itemName": "Phone cases",
       "quantity": "70",
@@ -43,11 +8,39 @@
       "fullPrice": 11480
     },
     {
-      "id": "bde78f5b-8bcb-44d3-9ddd-3402cd20a3c6",
-      "itemName": "Youtube ",
+      "id": "490857b2-c2b5-4504-a67a-1066e0efc143",
+      "itemName": "xoalni",
       "quantity": "1",
-      "singlePrice": "10",
-      "fullPrice": 10
+      "singlePrice": "1",
+      "fullPrice": 1
+    },
+    {
+      "id": "ee01f8e7-6c05-49ab-b41a-168824898206",
+      "itemName": "me",
+      "quantity": "1",
+      "singlePrice": "1",
+      "fullPrice": 1
+    },
+    {
+      "id": "d59c9299-709f-4668-aad9-f44cee224e52",
+      "itemName": "saf",
+      "quantity": "2",
+      "singlePrice": "2",
+      "fullPrice": 4
+    },
+    {
+      "id": "d3d31ac3-52fe-48ff-842e-4755c3166e29",
+      "itemName": "sss",
+      "quantity": "2",
+      "singlePrice": "2",
+      "fullPrice": 4
+    },
+    {
+      "id": "8dccbba3-98a3-4dd0-9959-f67658abbd4a",
+      "itemName": "sfdad",
+      "quantity": "3",
+      "singlePrice": "3",
+      "fullPrice": 9
     }
   ],
   "users": [
