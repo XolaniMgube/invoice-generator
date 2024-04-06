@@ -9,12 +9,33 @@ import EditModal from "../Components/Task/EditModal";
 
 import { motion } from "framer-motion";
 
+// Firebase Imports
+import { db } from "../config/firebase"
+import {getDocs, collection, addDoc} from "firebase/firestore"
+
 function Task() {
   const [material, setMaterial] = useState([]);
   const [total, setTotal] = useState(0);
   const [openEdit, setOpenEdit] = useState(false);
   const [openTotals, setOpenTotals] = useState(false);
   const [parseId, setParseId] = useState("");
+
+  // Firebase State
+  const [firebaseMaterial, setFirebaseMaterial] = useState([])
+  const firebaseMaterialRef = collection(db, "materialList")
+
+  const getMaterialList = async () => {
+    try {
+      const data = await getDocs(firebaseMaterialRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(), id: doc.id
+      }))
+      console.log(filteredData)
+      setFirebaseMaterial(filteredData)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   useEffect(() => {
     const fetchList = async () => {
@@ -32,6 +53,7 @@ function Task() {
       }
     };
     fetchList();
+    getMaterialList()
   }, []);
 
   function handleTotal(value) {
@@ -41,6 +63,8 @@ function Task() {
   function handleAddNewItem(newMaterial) {
     setMaterial((currentMaterial) => [...currentMaterial, newMaterial]);
   }
+
+  
 
   async function handleFilterOnDelete(filtered) {
     try {
@@ -121,6 +145,8 @@ function Task() {
         handleEdit={handleEdit}
         handleOpenTotals={handleOpenTotals}
         csvLink={csvLink}
+        firebaseMaterial={firebaseMaterial}
+        getMaterialList={getMaterialList}
       />
       {openTotals ? (
         <motion.div
@@ -150,6 +176,7 @@ function Task() {
             handleEdit={handleEdit}
             material={material}
             parseId={parseId}
+            getMaterialList={getMaterialList}
           />
         </motion.div>
       ) : null}

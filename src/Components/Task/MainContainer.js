@@ -1,6 +1,9 @@
 import AddedItemsList from "./AddedItemsList";
 import { ItemForm } from "./ItemForm";
 import { motion } from "framer-motion";
+import { db } from "../../config/firebase"
+import {getDocs, collection} from "firebase/firestore"
+import { useEffect, useState } from "react";
 
 export default function MainContainer({
   handleTotal,
@@ -11,7 +14,30 @@ export default function MainContainer({
   handleEdit,
   handleOpenTotals,
   csvLink,
+  firebaseMaterial,
+  getMaterialList,
 }) {
+
+  // const [fbMaterial, setFBMaterial] = useState([])
+  // const materialListRef = collection(db, "materialList")
+
+  // const getMaterialList = async () => {
+  //   try {
+  //     const data = await getDocs(materialListRef);
+  //     const filteredData = data.docs.map((doc) => ({
+  //       ...doc.data(), id: doc.id
+  //     }))
+  //     console.log(filteredData)
+  //     setFBMaterial(filteredData)
+  //   } catch (err) {
+  //     console.error(err)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getMaterialList()
+  // }, [])
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,15 +49,23 @@ export default function MainContainer({
       }}
       className="w-10/12 mx-5 my-5"
     >
-      <ItemForm handleAddNewItem={handleAddNewItem} handleTotal={handleTotal} material={material} />
+      <ItemForm handleAddNewItem={handleAddNewItem} handleTotal={handleTotal} material={material} getMaterialList={getMaterialList} />
       <AddedItemsList
         handleFilterOnDelete={handleFilterOnDelete}
         material={material}
         handleOpenEdit={handleOpenEdit}
         handleEdit={handleEdit}
         handleOpenTotals={handleOpenTotals}
-        csvLink={csvLink}
+        csvLink={csvLink} 
+        firebaseMaterial={firebaseMaterial}
+        getMaterialList={getMaterialList}
       />
+      <div>
+        {/* {fbMaterial.map((thing) => (
+          <h1>{thing.materialItem}</h1>
+        ))} */}
+        
+      </div>
     </motion.div>
   );
 }

@@ -1,15 +1,35 @@
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 
+import { db } from "../../config/firebase";
+import { doc, updateDoc } from "firebase/firestore";
+
 export default function EditModal({
   handleCloseEdit,
   material,
   parseId,
   handleEdit,
+  getMaterialList
 }) {
   const [itemToEdit, setItemToEdit] = useState("");
   const [qauntityToEdit, setQauntityToEdit] = useState("");
   const [singlePriceToEdit, setSinglePriceToEdit] = useState("");
+
+  const handleUpdateMaterial = async (id) => {
+    try {
+      const materialDoc = doc(db, "materialList", id)
+      await updateDoc(materialDoc, {
+        materialItem: itemToEdit,
+        materialQuantity: qauntityToEdit,
+        materialPrice: singlePriceToEdit,
+        materialSum: singlePriceToEdit * qauntityToEdit
+      })
+      getMaterialList()
+      handleCloseEdit()
+    } catch (err) {
+      console.error(err)
+    }
+  } 
 
   const rowToEdit = {
     itemName: itemToEdit,
@@ -57,7 +77,7 @@ export default function EditModal({
 
         <div className="my-3 flex justify-end">
           <button
-            onClick={() => handleEdit(parseId, rowToEdit)}
+            onClick={() => handleUpdateMaterial(parseId)}
             className="bg-logoBlueThree rounded font-bold text-white text-sm h-[43px] border-2 border-logoBlueThree px-[60px]"
           >
             Save

@@ -1,24 +1,59 @@
 import { useEffect, useRef, useState } from "react";
 import api from "../../api/invoice-data";
 
-export function ItemForm({ handleTotal, handleAddNewItem, material }) {
+import { db } from "../../config/firebase";
+import { collection, addDoc, deleteDoc, doc } from "firebase/firestore";
+
+export function ItemForm({
+  handleTotal,
+  handleAddNewItem,
+  material,
+  getMaterialList,
+}) {
   const [item, setItem] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
-  const [fieldError, setFieldError] = useState("")
-  const itemRef = useRef(null)
+  const [fieldError, setFieldError] = useState("");
+  const itemRef = useRef(null);
 
+  // Firebase
+  const firebaseMaterialRef = collection(db, "materialList");
+
+  const handleAddNewMaterial = async (e) => {
+    e.preventDefault();
+    if (item === "") {
+      itemRef.current.focus();
+      setFieldError("Make sure all fields are have correct input");
+      return;
+    }
+    try {
+      await addDoc(firebaseMaterialRef, {
+        materialItem: item,
+        materialQuantity: quantity,
+        materialPrice: price,
+        materialSum: quantity * price,
+      });
+      getMaterialList();
+    } catch (err) {
+      console.error(err);
+    }
+    setItem("");
+    setQuantity("");
+    setPrice("");
+  };
+
+  
 
   useEffect(() => {
-    itemRef.current?.focus()
-  }, [material])
+    itemRef.current?.focus();
+  }, [material]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (item === '') {
-      itemRef.current.focus()
-      setFieldError("Make sure all fields are have correct input")
-      return
+    if (item === "") {
+      itemRef.current.focus();
+      setFieldError("Make sure all fields are have correct input");
+      return;
     }
     const newMaterial = {
       id: crypto.randomUUID(),
@@ -38,15 +73,22 @@ export function ItemForm({ handleTotal, handleAddNewItem, material }) {
     setItem("");
     setQuantity("");
     setPrice("");
-    setFieldError('')
+    setFieldError("");
   };
 
   return (
     <div className="w-12/12 bg-white shadow rounded-lg mb-4 p-3">
       <div>
-        <h4 className="font-bold">Generate Invoice {fieldError ? <span className="px-3 text-red text-sm font-normal bg-cardLightRed">{fieldError}</span>: null}</h4>
+        <h4 className="font-bold">
+          Generate Invoice{" "}
+          {fieldError ? (
+            <span className="px-3 text-red text-sm font-normal bg-cardLightRed">
+              {fieldError}
+            </span>
+          ) : null}
+        </h4>
       </div>
-      <form className="" action="" onSubmit={handleSubmit}>
+      <form className="" action="" onSubmit={handleAddNewMaterial}>
         <div className="flex">
           <div className="w-6/12 mx-2">
             <div className="">
@@ -78,9 +120,9 @@ export function ItemForm({ handleTotal, handleAddNewItem, material }) {
             <input
               id="quantity"
               className="focus:outline-none w-full border-2  border-labelGrey py-2 px-2 focus:shadow-lg rounded"
-              type="text"
+              type="number"
               value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
+              onChange={(e) => setQuantity(Number(e.target.value))}
             />
           </div>
 
@@ -96,9 +138,9 @@ export function ItemForm({ handleTotal, handleAddNewItem, material }) {
             <input
               id="price"
               className="focus:outline-none w-full border-2 border-labelGrey py-2 px-2 focus:shadow-lg rounded"
-              type="text"
+              type="number"
               value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={(e) => setPrice(Number(e.target.value))}
             />
           </div>
           <div className="w-2/12 rounded flex items-end my-0 mx-2">

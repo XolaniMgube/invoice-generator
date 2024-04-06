@@ -3,6 +3,8 @@ import { FiUpload } from "react-icons/fi";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import { CSVLink } from "react-csv";
 
+
+
 export default function AddedItemsList({
   material,
   handleFilterOnDelete,
@@ -10,7 +12,11 @@ export default function AddedItemsList({
   handleEdit,
   handleOpenTotals,
   csvLink,
+  firebaseMaterial,
+  getMaterialList
 }) {
+
+   
   return (
     <div className="h-full">
       <div className="bg-white p-3 rounded-lg shadow">
@@ -44,7 +50,7 @@ export default function AddedItemsList({
               <th className="text-sm py-3">Action</th>
             </tr>
           </thead>
-          <tbody style={{ maxHeight: "100px", overflowY: "scroll" }}>
+          {/* <tbody style={{ maxHeight: "100px", overflowY: "scroll" }}>
             {material.map((mat, i) => (
               <AddedItem
                 mat={mat}
@@ -53,6 +59,21 @@ export default function AddedItemsList({
                 index={i}
                 handleOpenEdit={handleOpenEdit}
                 handleEdit={handleEdit}
+                firebaseMaterial={firebaseMaterial}
+              />
+            ))}
+          </tbody> */}
+          <tbody style={{ maxHeight: "100px", overflowY: "scroll" }}>
+            {firebaseMaterial.map((mat, i) => (
+              <AddedItem
+                mat={mat}
+                key={crypto.randomUUID()}
+                handleFilterOnDelete={handleFilterOnDelete}
+                index={i}
+                handleOpenEdit={handleOpenEdit}
+                handleEdit={handleEdit}
+                getMaterialList={getMaterialList}
+                // firebaseMaterial={firebaseMaterial}
               />
             ))}
           </tbody>

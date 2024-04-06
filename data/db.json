@@ -1,46 +1,11 @@
 {
   "list": [
     {
-      "id": "1b704d79-3b40-4923-8085-49a45d0385bd",
-      "itemName": "Phone cases",
-      "quantity": "70",
-      "singlePrice": "164",
-      "fullPrice": 11480
-    },
-    {
-      "id": "490857b2-c2b5-4504-a67a-1066e0efc143",
-      "itemName": "xoalni",
-      "quantity": "1",
-      "singlePrice": "1",
-      "fullPrice": 1
-    },
-    {
-      "id": "ee01f8e7-6c05-49ab-b41a-168824898206",
-      "itemName": "me",
-      "quantity": "1",
-      "singlePrice": "1",
-      "fullPrice": 1
-    },
-    {
-      "id": "d59c9299-709f-4668-aad9-f44cee224e52",
-      "itemName": "saf",
-      "quantity": "2",
-      "singlePrice": "2",
-      "fullPrice": 4
-    },
-    {
-      "id": "d3d31ac3-52fe-48ff-842e-4755c3166e29",
-      "itemName": "sss",
-      "quantity": "2",
-      "singlePrice": "2",
-      "fullPrice": 4
-    },
-    {
-      "id": "8dccbba3-98a3-4dd0-9959-f67658abbd4a",
-      "itemName": "sfdad",
-      "quantity": "3",
-      "singlePrice": "3",
-      "fullPrice": 9
+      "itemName": "cups red",
+      "quantity": "50",
+      "singlePrice": "70",
+      "fullPrice": 3500,
+      "id": "8cfadbe8-9df4-4307-8db2-51cb36e56519"
     }
   ],
   "users": [
